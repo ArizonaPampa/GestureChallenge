@@ -11,24 +11,17 @@ import java.util.TimerTask;
 import model.SoundManager.MP3;
 
 import org.jbox2d.dynamics.Body;
-import org.mt4j.AbstractMTApplication;
 import org.mt4j.components.MTComponent;
 import org.mt4j.components.visibleComponents.shapes.MTEllipse;
-import org.mt4j.components.visibleComponents.shapes.MTRoundRectangle;
-import org.mt4j.sceneManagement.Iscene;
 import org.mt4j.util.MTColor;
 import org.mt4j.util.math.ToolsMath;
 import org.mt4j.util.math.Vector3D;
 
-import codeanticode.gsvideo.GSMovie;
-
 import playerinterface.PlayerInterface;
+import popup.AdvancedHelpSequence;
 import popup.BeginnerHelpSequence;
-import popup.BeginnerLevelHelpPopup;
-import popup.HelpPopup;
 import popup.HybridHelpPopUp;
 import popup.IntermediateHelpSequence;
-import popup.IntermediateLevelHelpPopup;
 import popup.PopUpCreator;
 import popup.Popup;
 import popup.PopupLogo;
@@ -37,6 +30,7 @@ import popup.touch.PopupNbPlayers;
 import popup.video.PopupVideo;
 import scene.GestureChallengeScene;
 import scene.menu.GCSceneMenu;
+import codeanticode.gsvideo.GSMovie;
 
 
 public class GameModel implements PopUpCreator {
@@ -56,8 +50,8 @@ public class GameModel implements PopUpCreator {
 	GSMovie m2;
 	GSMovie m3;
 	GSMovie m4;
+	@SuppressWarnings("rawtypes")
 	ArrayList<RankingPopup> rankingPopup=new ArrayList<RankingPopup>();
-	ArrayList<HelpPopup> helpPopup = new ArrayList<HelpPopup>();
 	SoundManager mySoundManager;
 	MP3 DecomptePlayer;
 	boolean isDecomptePlaying=false;
@@ -691,8 +685,8 @@ public void fireRanks(){
 			}
 			
 			if(levelNumber>=3){
-				s = new BeginnerHelpSequence("."+((String)File.separator)+"src"+((String)File.separator)+"popup"+((String)File.separator)+"video"+((String)File.separator)+"data"+((String)File.separator)+"pan2.avi",m3,myGCS.getMTApplication(),p);
-				p.addSequence("Pan Gesture", s);
+				AdvancedHelpSequence Ad = new AdvancedHelpSequence("."+((String)File.separator)+"src"+((String)File.separator)+"popup"+((String)File.separator)+"video"+((String)File.separator)+"data"+((String)File.separator)+"pan2.avi",m3,myGCS.getMTApplication(),p);
+				p.addSequence("Pan Gesture", Ad);
 			}
 			
 			p.playSequence("Drag Gesture");

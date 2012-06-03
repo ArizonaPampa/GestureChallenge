@@ -1,10 +1,6 @@
 package scene;
 
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
 import model.Constants;
 import model.GameModel;
@@ -19,32 +15,22 @@ import org.jbox2d.dynamics.contacts.ContactPoint;
 import org.jbox2d.dynamics.contacts.ContactResult;
 import org.mt4j.AbstractMTApplication;
 import org.mt4j.components.MTComponent;
-import org.mt4j.components.TransformSpace;
 import org.mt4j.components.visibleComponents.shapes.MTRectangle;
-import org.mt4j.components.visibleComponents.widgets.MTSceneMenu;
-import org.mt4j.input.inputProcessors.IGestureEventListener;
-import org.mt4j.input.inputProcessors.MTGestureEvent;
-import org.mt4j.input.inputProcessors.componentProcessors.tapProcessor.TapEvent;
-import org.mt4j.input.inputProcessors.componentProcessors.tapProcessor.TapProcessor;
 import org.mt4j.input.inputProcessors.globalProcessors.CursorTracer;
 import org.mt4j.sceneManagement.AbstractScene;
 import org.mt4j.util.MTColor;
-import org.mt4j.util.math.ToolsMath;
 import org.mt4j.util.math.Vector3D;
 import org.mt4j.util.math.Vertex;
 
 import physic.shape.IPhysicsComponent;
 import physic.shape.PhysicsCircle;
-import physic.shape.PhysicsPolygon;
 import physic.shape.PhysicsRectangle;
-import physic.shape.PhysicsShield;
-import physic.shape.util.PhysicsHelper;
 import physic.shape.util.UpdatePhysicsAction;
 import playerinterface.PlayerBullet;
-import playerinterface.PlayerGoal;
 import playerinterface.PlayerRotableShield;
 import popup.FakePlayerBullet;
 import popup.FakePlayerOwnGoal;
+import popup.FakePlayerPanShield;
 import popup.FakePlayerRotableShield;
 import scene.menu.GCSceneMenu;
 
@@ -499,7 +485,26 @@ public class GestureChallengeScene extends AbstractScene {
 
 									}
 								}
-							
+								else if((other = isHit("FakePlayerPanShield",comp1,comp2))!=null){
+
+
+									//System.out.println("met a wall");
+									final FakePlayerPanShield pS = (FakePlayerPanShield) other;
+									aBullet.bounce();
+									myGM.playBounceGoalSound();
+									if(aBullet.getReboundleft()<=0){
+										app.invokeLater(new Runnable() {
+											public void run() {	
+												world.destroyBody(aBullet.getBody());
+												physicsContainer.removeChild(aBullet);
+
+												pS.caughtBullet();
+
+											}
+										});
+
+									}
+								}
 							
 							
 						}

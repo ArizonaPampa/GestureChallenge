@@ -46,6 +46,7 @@ import org.mt4j.input.inputProcessors.componentProcessors.AbstractComponentProce
 import org.mt4j.input.inputProcessors.componentProcessors.dragProcessor.DragEvent;
 import org.mt4j.input.inputProcessors.componentProcessors.dragProcessor.DragProcessor;
 import org.mt4j.input.inputProcessors.componentProcessors.dragProcessor.MultipleDragProcessor;
+import org.mt4j.util.MTColor;
 import org.mt4j.util.PlatformUtil;
 import org.mt4j.util.math.Vector3D;
 import org.mt4j.util.math.Vertex;
@@ -53,11 +54,8 @@ import org.mt4j.util.opengl.GLMaterial;
 import org.mt4j.util.opengl.GluTrianglulator;
 
 import physic.shape.PhysicsRectangle;
-import popup.HelpPopup;
-import popup.BeginnerLevelHelpPopup;
 import popup.HybridHelpPopUp;
 import processing.core.PApplet;
-import org.mt4j.util.MTColor;
 
 public class PhysicsHelper {
 	

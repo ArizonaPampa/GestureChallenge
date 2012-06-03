@@ -3,14 +3,11 @@ package popup;
 import model.Constants;
 
 import org.jbox2d.dynamics.World;
-import org.mt4j.components.TransformSpace;
 import org.mt4j.components.visibleComponents.shapes.MTEllipse;
 import org.mt4j.components.visibleComponents.widgets.MTTextField;
 import org.mt4j.util.MTColor;
 import org.mt4j.util.font.FontManager;
-import org.mt4j.util.math.ToolsMath;
 import org.mt4j.util.math.Vector3D;
-
 
 import physic.shape.PhysicsCircle;
 import processing.core.PApplet;
@@ -19,15 +16,15 @@ import scene.GestureChallengeScene;
 public class FakePlayerOwnGoal extends PhysicsCircle {
 	
 
-	IntermediateHelpSequence myHS;
+	HelpSequence myHS;
 	
-	public IntermediateHelpSequence getMyHS(){
+	public HelpSequence getMyHS(){
 		return myHS;
 	}
 	
 	public FakePlayerOwnGoal(PApplet applet, Vector3D centerPoint,
 			World world,
-			float worldScale, MTColor color, float angle, GestureChallengeScene s, IntermediateHelpSequence hS) {
+			float worldScale, MTColor color, float angle, GestureChallengeScene s, HelpSequence hS) {
 		super(applet, centerPoint, Constants.radiusGoals, world, 0f, 0f, 0f,
 				worldScale);
 		myHS=hS;

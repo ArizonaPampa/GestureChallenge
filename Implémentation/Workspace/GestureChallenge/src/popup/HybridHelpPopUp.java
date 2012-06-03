@@ -425,7 +425,6 @@ class ReadyToPlayButton extends MTRoundRectangle{
 					TapEvent te = (TapEvent)ge;
 					if (te.isTapped()){
 						
-						
 						myPC.reactToPopUpResponse(myName,1);
 						
 						if(!Constants.isOnMac){

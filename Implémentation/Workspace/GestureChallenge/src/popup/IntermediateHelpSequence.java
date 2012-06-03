@@ -121,8 +121,8 @@ public class IntermediateHelpSequence extends HelpSequence {
 				ThreeFingersAverageGestureEvent evt = (ThreeFingersAverageGestureEvent) ge;
 				float angle = evt.getRotationAngleRadian();
 				float beta = myFPS.getBody().getAngle();
-				Vector3D center = myFPS.getCenterPointGlobal();
-				Vec2 newPos = new Vec2(PhysicsHelper.scaleDown((float)(center.x-Constants.shieldDistance*Math.sin(angle+beta)),IntermediateHelpSequence.this.getMyHHP().myScene.getScale()),PhysicsHelper.scaleDown((float)(center.y+Constants.shieldDistance*Math.cos(angle+beta)), IntermediateHelpSequence.this.getMyHHP().myScene.getScale()));
+				Vector3D center = myFPOG.getCenterPointGlobal();
+				Vec2 newPos = new Vec2(PhysicsHelper.scaleDown((float)(center.x-Constants.shieldDistance*Math.sin(angle+beta)), IntermediateHelpSequence.this.getMyHHP().myScene.getScale()),PhysicsHelper.scaleDown((float)(center.y+Constants.shieldDistance*Math.cos(angle+beta)), IntermediateHelpSequence.this.getMyHHP().myScene.getScale()));
 				myFPS.getBody().setXForm(newPos, angle+myFPS.getBody().getAngle());
 				return false;
 			}
